@@ -21,12 +21,15 @@
   <script>
     $(document).ready(function(){
       $("#sendmessage").click(function(){
-        var payload = { 
-          "name": $("#message").val()
-        };
-        $.post("https://fnctest0001.azurewebsites.net/api/HttpTrigger1", payload, function(data, status){
-          console.log("Data: " + data + "\nStatus: " + status);
-        });
+        $.ajax({
+            url: "https://fnctest0001.azurewebsites.net/api/HttpTrigger1",
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify( { 
+              "name": $("#message").val()
+            } ),
+            contentType: "application/json"
+        }); 
       });
     });
   </script>
