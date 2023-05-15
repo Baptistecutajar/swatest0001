@@ -17,7 +17,7 @@
     <input type="text" id="message"/>
     <button id="sendmessage">Send Message</button>
     <button id="getmessage">Get Message</button>
-
+    <br><br>
     <div id="messages"></div>
   </main>
 
@@ -44,8 +44,8 @@
         }).done(function (res) {
             let messages = "";
             for (let i in res) {
-                messages += (new Date(res[i]._ts+"000")).toLocaleDateString()+" ";
-                messages += (new Date(res[i]._ts+"000")).toLocaleTimeString()+" - ";
+                messages += (new Date(res[i]._ts*1000)).toLocaleDateString()+" ";
+                messages += (new Date(res[i]._ts*1000)).toLocaleTimeString()+" - ";
                 messages += res[i].name+"<br><br>";
             }
             $("#messages").html(messages);
