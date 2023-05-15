@@ -16,6 +16,7 @@
 
     <input type="text" id="message"/>
     <button id="sendmessage">Send Message</button>
+    <button id="getmessage">Get Message</button>
   </main>
 
   <script>
@@ -28,6 +29,15 @@
             data: JSON.stringify( { 
               "name": $("#message").val()
             } ),
+            contentType: "application/json"
+        }); 
+      });
+
+      $("#getmessage").click(function(){
+        $.ajax({
+            url: "https://fnctest0001.azurewebsites.net/api/HttpTrigger3",
+            type: "POST",
+            dataType: "json",
             contentType: "application/json"
         }); 
       });
