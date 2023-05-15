@@ -17,6 +17,8 @@
     <input type="text" id="message"/>
     <button id="sendmessage">Send Message</button>
     <button id="getmessage">Get Message</button>
+
+    <div id="messages"></div>
   </main>
 
   <script>
@@ -39,6 +41,15 @@
             type: "POST",
             dataType: "json",
             contentType: "application/json"
+        }).done(function (res) {
+            let messages = "";
+            for (let i in res) {
+                messages += (new Date(res[i]._ts+"000")).toLocaleDateString()+" ";
+                messages += (new Date(res[i]._ts+"000")).toLocaleTimeString()+" - ";
+                messages += res[i].name+"<br><br>";
+            }
+            $("#messages").html(messages);
+
         }); 
       });
     });
