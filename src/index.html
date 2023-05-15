@@ -14,8 +14,10 @@
   <main>
     <h1>Chat static Azure test</h1>
 
-    <input type="text" id="message"/>
+    <input placeholder="pseudo" type="text" id="pseudo"/>
+    <input placeholder="message" type="text" id="message"/>
     <button id="sendmessage">Send Message</button>
+    <br>
     <button id="getmessage">Get Message</button>
     <br><br>
     <div id="messages"></div>
@@ -29,7 +31,8 @@
             type: "POST",
             dataType: "json",
             data: JSON.stringify( { 
-              "name": $("#message").val()
+              "pseudo": $("#pseudo").val(),
+              "name": $("#message").val(),
             } ),
             contentType: "application/json"
         }); 
@@ -46,6 +49,7 @@
             for (let i in res) {
                 messages += (new Date(res[i]._ts*1000)).toLocaleDateString()+" ";
                 messages += (new Date(res[i]._ts*1000)).toLocaleTimeString()+" - ";
+                messages += res[i].pseudo+": ";
                 messages += res[i].name+"<br><br>";
             }
             $("#messages").html(messages);
