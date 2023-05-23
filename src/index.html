@@ -54,7 +54,8 @@
     function getMessage() {
       var code = location.href.split("#")[1];
       $.ajax({
-            url: "https://fnctest0001.azurewebsites.net/api/HttpTrigger3?code="+code,
+            //url: "https://fnctest0001.azurewebsites.net/api/HttpTrigger3?code="+code,
+            url: "https://testapi0110.azure-api.net/HttpTrigger3?code="+code,
             type: "POST",
             dataType: "json",
             contentType: "application/json"
