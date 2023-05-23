@@ -30,7 +30,8 @@
 
       $("#sendmessage").click(function(){
         $.ajax({
-            url: "https://fnctest0001.azurewebsites.net/api/HttpTrigger1?code="+code,
+            //url: "https://fnctest0001.azurewebsites.net/api/HttpTrigger1?code="+code,
+            url: "https://testapi0110.azure-api.net/HttpTrigger1?code="+code,
             type: "POST",
             dataType: "json",
             data: JSON.stringify( { 
