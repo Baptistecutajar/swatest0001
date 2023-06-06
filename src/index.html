@@ -39,7 +39,7 @@
   <br>
 
   <main>
-    <h1>Chat static Azure test v0</h1>
+    <h1>Chat static Azure test v1</h1>
 
     <input placeholder="pseudo" type="text" id="pseudo"/>
     <input placeholder="message" type="text" id="message"/>
@@ -53,7 +53,7 @@
 
   <script>
     $(document).ready(function(){
-
+        console.log("ready");
       var code = location.href.split("#")[1];
 
       $("#sendmessage").click(function(){
