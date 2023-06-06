@@ -10,7 +10,8 @@ const msalConfig = {
         // Full directory URL, in the form of https://login.microsoftonline.com/<tenant-id>
         authority: "https://login.microsoftonline.com/20f62116-4d0c-44ac-8a45-390ca2765601",
         // Full redirect URL, in form of http://localhost:3000
-        redirectUri: "http://localhost:3000/",
+        //redirectUri: "http://localhost:3000/",
+        redirectUri: "https://nice-bay-06ee4fb03.3.azurestaticapps.net/",
     },
     cache: {
         cacheLocation: "sessionStorage", // This configures where your cache will be stored
