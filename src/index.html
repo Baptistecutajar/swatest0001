@@ -25,6 +25,9 @@
   <link rel="SHORTCUT ICON" href="https://c.s-microsoft.com/favicon.ico?v2" type="image/x-icon">
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script>
+    var $j = jQuery.noConflict();
+  </script>
 </head>
 
 <body>
@@ -71,7 +74,7 @@
   <br>
 
   
-  
+
   <main>
 
     <h1>Chat static Azure test v1</h1>
@@ -87,19 +90,19 @@
   </main>
 
   <script>
-    $(document).ready(function(){
+    $j(document).ready(function(){
         console.log("ready");
       var code = location.href.split("#")[1];
 
-      $("#sendmessage").click(function(){
-        $.ajax({
+      $j("#sendmessage").click(function(){
+        $j.ajax({
             //url: "https://fnctest0001.azurewebsites.net/api/HttpTrigger1?code="+code,
             url: "https://testapi0110.azure-api.net/HttpTrigger1?code="+code,
             type: "POST",
             dataType: "json",
             data: JSON.stringify( { 
-              "pseudo": $("#pseudo").val(),
-              "name": $("#message").val(),
+              "pseudo": $j("#pseudo").val(),
+              "name": $j("#message").val(),
             } ),
             contentType: "application/json"
         }).done(function() {
@@ -107,10 +110,10 @@
         }); 
       });
 
-      $("#getmessage").click(function(){
+      $j("#getmessage").click(function(){
         getMessage();
       });
-      $("#getmessagenc").click(function(){
+      $j("#getmessagenc").click(function(){
         getMessageNoCache();
       });
 
@@ -119,7 +122,7 @@
 
     function getMessage() {
       var code = location.href.split("#")[1];
-      $.ajax({
+      $j.ajax({
             //url: "https://fnctest0001.azurewebsites.net/api/HttpTrigger3?code="+code,
             url: "https://testapi0110.azure-api.net/HttpTrigger3?code="+code,
             type: "POST",
@@ -133,13 +136,13 @@
                 messages += res[i].pseudo+": ";
                 messages += res[i].name+"<br><br>";
             }
-            $("#messages").html(messages);
+            $j("#messages").html(messages);
 
         }); 
     }
     function getMessageNoCache() {
       var code = location.href.split("#")[1];
-      $.ajax({
+      $j.ajax({
             url: "https://fnctest0001.azurewebsites.net/api/HttpTrigger3?code="+code,
             type: "POST",
             dataType: "json",
@@ -152,7 +155,7 @@
                 messages += res[i].pseudo+": ";
                 messages += res[i].name+"<br><br>";
             }
-            $("#messages").html(messages);
+            $j("#messages").html(messages);
 
         }); 
     }
