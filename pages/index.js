@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,6 +15,10 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+
+        <h2>
+          { props.beer }
+        </h2>
 
         <p className={styles.description}>
           Get started by editing{' '}
@@ -66,4 +70,15 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const res = await fetch('https://api.punkapi.com/v2/beers/random');
+  const beers = await res.json();
+  return {
+    props: {
+      beer: beers[0].name,
+    },
+    revalidate: 20,
+  };
 }
